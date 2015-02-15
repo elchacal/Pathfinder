@@ -149,7 +149,7 @@ public class Grid: Map {
 
     /// Returns the valid moves that can be performed from one node to the other
     override internal func validMoves(node: Node) -> [Node] {
-        let index = node.coordinates as Coordinates2D
+        let index = node.coordinates as! Coordinates2D
         var moves = [Node]()
         
         // Those are the delta values from one node coordinate to the other
@@ -173,16 +173,16 @@ public class Grid: Map {
     
     /// Calculates the move cost from one node to one of it's neighbour nodes
     override internal func moveCostForNode(node: Node, toNode: Node) -> Int {
-        let index = node.coordinates as Coordinates2D
-        let toIndex = toNode.coordinates as Coordinates2D
+        let index = node.coordinates as! Coordinates2D
+        let toIndex = toNode.coordinates as! Coordinates2D
         
         return ((abs(index.x - toIndex.x) > 0 && abs(index.y - toIndex.y) > 0) ? 10 : 14)
     }
     
     /// Calculates the h value of a node
     override internal func hValueForNode(node: Node, endNode: Node) -> Int {
-        let coord1 = node.coordinates as Coordinates2D
-        let coord2 = endNode.coordinates as Coordinates2D
+        let coord1 = node.coordinates as! Coordinates2D
+        let coord2 = endNode.coordinates as! Coordinates2D
         
         switch heuristicFunction {
             case .Manhattan:
